@@ -1,0 +1,13 @@
+#!/bin/sh
+
+#defines the file paths for the ilastik project, the image and the location for the segmented images
+#These paths must be in windows format since ilastik runs on windows
+Project_path="C:\Users\.openjfx\Documents\test.ilp"
+image_path1="C:\Users\.openjfx\Documents\Ilastik\File1.h5/Data"
+image_path2="C:\Users\.openjfx\Documents\Ilastik\File1-Copy.h5/Data"
+
+#changes to the folder where ilastik was downloaded
+cd "/mnt/c/Program Files/ilastik-1.4.1.post1"
+
+#runs ilastik and outputs the segmented images into a specific folder with their name and slice index
+./ilastik.exe --headless --project=$Project_path $image_path1 $image_path2 --input_axes=tzyxc --export_source='Probabilities' --output_format='tiff sequence' --output_filename_format="C:\Users\.openjfx\Documents\Ilastik\results\{nickname}\{slice_index}.tiff"
